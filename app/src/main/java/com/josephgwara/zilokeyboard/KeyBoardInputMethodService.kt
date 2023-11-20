@@ -30,21 +30,23 @@ class KeyBoardInputMethodService:InputMethodService(),KeyboardView.OnKeyboardAct
 
     override fun onKey(primaryCode: Int, keyCodes: IntArray?) {
        val inputConnection:InputConnection = currentInputConnection
-        if (inputConnection != null){
-            when(primaryCode){
-                Keyboard.KEYCODE_DELETE -> {
-                    inputConnection.deleteSurroundingText(1,0)
-                }
-                Keyboard.KEYCODE_DONE ->{
-                    inputConnection.sendKeyEvent(KeyEvent(KeyEvent.ACTION_DOWN,KeyEvent.KEYCODE_ENTER))
-                }
-                else ->{
+        when(primaryCode){
+            Keyboard.KEYCODE_DELETE -> {
+                inputConnection.deleteSurroundingText(1,0)
+            }
+            Keyboard.KEYCODE_DONE ->{
+                inputConnection.sendKeyEvent(KeyEvent(KeyEvent.ACTION_DOWN,KeyEvent.KEYCODE_ENTER))
+            }
+            Keyboard.KEYCODE_SHIFT->{
+                //Excluded functionality
+            }
+            else ->{
+                val code :Char = primaryCode.toChar()
+                inputConnection.commitText(code.toString(),1)
 
-                    val code :Char = primaryCode.toChar()
-                    inputConnection.commitText(code.toString(),1)
-                }
             }
         }
+
     }
 
     override fun onText(text: CharSequence?) {
