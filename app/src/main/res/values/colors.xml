@@ -7,4 +7,11 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="Gunmetal">#143642</color>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="keyboard_background_color">#008577</color>
+    <color name="keyboard_divider">#00574B</color>
+    <color name="keyboard_pressed">#D81B60</color>
 </resources>

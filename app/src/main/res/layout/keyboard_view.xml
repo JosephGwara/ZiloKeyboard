@@ -3,8 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/keyboard_view"
+    android:orientation="vertical"
+    android:keyTextColor="@android:color/white"
+    android:keyBackground="@drawable/key_background"
+    android:background="@drawable/rounded_rectangle"
     android:keyPreviewLayout="@layout/key_preview"
-    android:layout_alignParentBottom="true"
-    android:background="@color/white">
+    android:shadowRadius="0.0"
+    android:layout_alignParentBottom="true">
 
 </android.inputmethodservice.KeyboardView>

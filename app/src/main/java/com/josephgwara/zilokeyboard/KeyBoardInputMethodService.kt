@@ -10,13 +10,8 @@ import android.view.inputmethod.InputConnection
 
 class KeyBoardInputMethodService:InputMethodService(),KeyboardView.OnKeyboardActionListener {
 
-
-
-
     private var keyBoardView : KeyboardView? = null
     private var keyboard:Keyboard? = null
-    private var caps = false
-
 
     override fun onCreateInputView(): View {
         keyBoardView = layoutInflater.inflate(R.layout.keyboard_view,null) as KeyboardView
@@ -44,6 +39,7 @@ class KeyBoardInputMethodService:InputMethodService(),KeyboardView.OnKeyboardAct
                     inputConnection.sendKeyEvent(KeyEvent(KeyEvent.ACTION_DOWN,KeyEvent.KEYCODE_ENTER))
                 }
                 else ->{
+
                     val code :Char = primaryCode.toChar()
                     inputConnection.commitText(code.toString(),1)
                 }
