@@ -38,25 +38,14 @@ class KeyBoardInputMethodService:InputMethodService(),KeyboardView.OnKeyboardAct
         if (inputConnection != null){
             when(primaryCode){
                 Keyboard.KEYCODE_DELETE -> {
-                    val selectedText :CharSequence = inputConnection.getSelectedText(0)
-                    if (TextUtils.isEmpty(selectedText)) inputConnection.deleteSurroundingText(1,0)
-                    else inputConnection.commitText("",1)
-                }
-                Keyboard.KEYCODE_SHIFT ->{
-                    caps = !caps
-                    keyboard?.setShifted(caps)
-                    keyBoardView?.invalidateAllKeys()
+                    inputConnection.deleteSurroundingText(1,0)
                 }
                 Keyboard.KEYCODE_DONE ->{
                     inputConnection.sendKeyEvent(KeyEvent(KeyEvent.ACTION_DOWN,KeyEvent.KEYCODE_ENTER))
                 }
                 else ->{
-                    var code :Char = primaryCode.toChar()
-                    if (Character.isLetter(code) && caps){
-                        code = Character.toUpperCase(code)
-                    }
+                    val code :Char = primaryCode.toChar()
                     inputConnection.commitText(code.toString(),1)
-
                 }
             }
         }
